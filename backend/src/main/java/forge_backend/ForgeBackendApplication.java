@@ -1,4 +1,4 @@
-package com.forge;
+package forge_backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
