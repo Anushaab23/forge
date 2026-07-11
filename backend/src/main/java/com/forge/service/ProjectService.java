@@ -2,18 +2,27 @@ package com.forge.service;
 
 import com.forge.dto.ApiResponse;
 import com.forge.dto.CreateProjectRequest;
+import com.forge.entity.Project;
+import com.forge.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProjectService {
 
+    private final ProjectRepository projectRepository;
+
+    public ProjectService(ProjectRepository projectRepository) {
+        this.projectRepository = projectRepository;
+    }
+
     public ApiResponse<String> createProject(CreateProjectRequest request) {
 
-        // Later:
-        // Validate Git URL
-        // Clone Repository
-        // Detect Framework
-        // Save to Database
+        Project project = new Project(
+                request.name(),
+                request.repositoryUrl()
+        );
+
+        projectRepository.save(project);
 
         return new ApiResponse<>(
                 true,
