@@ -1,5 +1,6 @@
 package com.forge.controller;
 
+import com.forge.dto.ApiResponse;
 import com.forge.dto.CreateProjectRequest;
 import com.forge.service.ProjectService;
 import jakarta.validation.Valid;
@@ -16,9 +17,9 @@ public class ProjectController {
     }
 
     @PostMapping
-public ApiResponse<String> createProject(
-        @Valid @RequestBody CreateProjectRequest request) {
+    public ApiResponse<String> createProject(
+            @Valid @RequestBody CreateProjectRequest request) {
 
-    return projectService.createProject(request);
-}
+        return projectService.createProject(request);
+    }
 }
