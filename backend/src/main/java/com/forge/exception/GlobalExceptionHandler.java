@@ -27,5 +27,15 @@ public class GlobalExceptionHandler {
                 "Validation failed",
                 errors
         );
-    }
+    }@ExceptionHandler(ResourceNotFoundException.class)
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public ApiResponse<String> handleResourceNotFoundException(
+        ResourceNotFoundException ex) {
+
+    return new ApiResponse<>(
+            false,
+            ex.getMessage(),
+            null
+    );
+}
 }
